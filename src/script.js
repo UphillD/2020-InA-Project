@@ -1,20 +1,23 @@
+// Columns to show in the final table
 vCols = [0, 3, 9, 10]
 vNames = ["UID", "Title", "Publish Date", "Authors"]
+// Columns to check for mentions of the search query
 cCols = [3, 8];
 cNames = ["Title", "Abstract", "Full Text"];
 
 /* parseCSV function
  * Parses the metadata .csv file row-by-row, passing the results to addRow()
  * Inputs:	file -> the .csv file
- *			drug -> the search query
- * Outputs: Displays the final table in HTML
+ *			query -> the search query
  */
 function parseCSV(file, query) {
 	// Create reference to contents of table
-	let tableRef = document.getElementById("table").getElementsByTagName("tbody")[0];
+	let tableRef = document.getElementById("finalTable").getElementsByTagName("tbody")[0];
 	// Clean table of previous data
 	// start from index 1 to skip header
 	while(tableRef.rows[1]) tableRef.deleteRow(1);
+	
+	document.getElementById("footer").textContent = "Searching...";
 	
 	// Parse the .csv file
 	Papa.parse(file, {
@@ -26,6 +29,7 @@ function parseCSV(file, query) {
 		complete: function(results) {
 			// Print a confirmation message to the console
 			console.log("CSV parsing complete.");
+			document.getElementById("footer").textContent = "Done.";
 		}
 	});
 }
@@ -36,10 +40,11 @@ function parseCSV(file, query) {
  * add it to the final table
  */
 function addRow(row, tableRef, drug) {
-	let occs, ptr;
-	let newRow, newCell, newText;
 	let i, j;
+	let occs, ptr, text;
+	let newRow, newCell, newText;
 	let containers, numbers;
+
 	// Skip header row
 	if (row[0] == "cord_uid") {
 		return;
@@ -56,7 +61,8 @@ function addRow(row, tableRef, drug) {
 		for (j = 0; j < vCols.length; j++) {
 			ptr = vCols[j];
 			newCell = newRow.insertCell(j);
-			newText = document.createTextNode(String(row[ptr]).substr(0,50));
+			text = formatAuthors(String(row[ptr]), ptr);
+			newText = document.createTextNode(text);
 			newCell.appendChild(newText);
 		}
 
@@ -64,8 +70,10 @@ function addRow(row, tableRef, drug) {
 		numbers = "";
 		for (i = 0; i < occs.length; i++) {
 			if (occs[i] > 0) {
-				containers += cNames[i] + "; ";
-				numbers += String(occs[i]) + "; ";
+				if (containers.length > 0) containers += "; ";
+				containers += cNames[i];
+				if (numbers.length > 0) numbers += "; ";
+				numbers += String(occs[i]);
 			}
 		}
 		newCell = newRow.insertCell(j);
@@ -125,21 +133,42 @@ function loadFile(file) {
 }
 
 function mainFun() {
-	var drug = document.getElementById('inputForm').value;	
+	var drug = document.getElementById('input').value;	
 	event.preventDefault();
 	array = parseCSV('../data/metadata.csv', drug);
 }
 
-// https://stackoverflow.com/questions/4009756/how-to-count-string-occurrence-in-string
+function formatAuthors(string, ptr) {
+	if (ptr == 10) {
+		let authors, newString;
+		authors = string.split(',');
+		newString = authors[0];
+		if (authors.length > 2) newString += ", et al";
+		return newString;
+	}
+	return string;
+}
+
+vCols = [0, 3, 9, 10]
+vNames = ["UID", "Title", "Publish Date", "Authors"]
+/* occurrences function
+ * return the number of occurrences of a substring within a string
+ * taken from: https://stackoverflow.com/questions/4009756/how-to-count-string-occurrence-in-string
+ */
 function occurrences(string, subString, allowOverlapping) {
 
+	// Typecast
     string += "";
     subString += "";
-    if (subString.length <= 0) return (string.length + 1);
+    // Make sure that the substring has a positive length
+	// Not needed for our application
+	//if (subString.length <= 0) return (string.length + 1);
 
     var n = 0,
         pos = 0,
-        step = allowOverlapping ? 1 : subString.length;
+		// Not needed for our application
+        //step = allowOverlapping ? 1 : subString.length;
+		step = subString.length;
 
     while (true) {
         pos = string.indexOf(subString, pos);
@@ -151,7 +180,8 @@ function occurrences(string, subString, allowOverlapping) {
     return n;
 }
 
-document.getElementById("inputForm")
+// Event listener for sending the search query by pressing "Enter"
+document.getElementById("input")
     .addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {

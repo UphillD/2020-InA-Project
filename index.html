@@ -9,28 +9,49 @@
 </head>
 <body>
 
-<div class="box">
 	<div id="topSection">
-		<form id="searchForm">
-			<span class="icon"><i class="fa fa-search-plus"></i></span>
-			<input type="text" id="inputForm" name="drug" value="drug" />
-			<input type="submit" value="Submit" onsubmit="return false" onclick="mainFun()"/>
-		</form>
+		<div class="header" id="hleft">
+			Karteris Antonios<br>
+			03112076
+		</div>
+		<div class="header" id="hcenter">
+			Internet & Applications<br>
+			COVID-02 Project
+		</div>
+		<div class="header" id="hright">
+			<a href="https://github.com/UphillD/InA-COVID-02">GitHub</a><br>
+			<a href="https://www.semanticscholar.org/cord19">CORD-19 Dataset</a>
+		</div>
 	</div>
-</div>
-<div>
-	<table border=0 id="table">
-		<tr>
-			<th>UID</th>
-			<th>Title</th>
-			<th>Publish Date</th>
-			<th>Authors</th>
-			<th>Drug Mentioned in</th>
-			<th>Mentions</th>
-		</tr>
-		<tbody>
-		</tbody>
-	</table>
-</div>
-<script src="/src/parseCSV.js"></script>
+
+	<div id="middleSection">
+		<div id="formContainer">
+			<input type="text" id="input" placeholder="Search..."/>
+			<input type="submit" id="submit" value="&#xf00e;" onclick="mainFun()"/>
+		</div>
+	</div>
+	
+	<div id="tableSection">
+		<table id="finalTable">
+			<thead>
+				<tr>
+					<th>UID</th>
+					<th>Title</th>
+					<th>Publish Date</th>
+					<th>Authors</th>
+					<th>Drug Mentioned in</th>
+					<th>Mentions</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+	
+	<div id="bottomSection">
+		<div id="footer">
+		</div>
+	</div>
+
+	<script src="/src/script.js"></script>
 </body>
