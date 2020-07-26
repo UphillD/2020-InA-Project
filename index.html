@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.2.0/papaparse.js"></script>
+	<link rel="stylesheet" type="text/css" href="src/style.css">
+	
+</head>
+<body>
+
+<div class="box">
+	<div id="topSection">
+		<form id="searchForm">
+			<span class="icon"><i class="fa fa-search-plus"></i></span>
+			<input type="text" id="inputForm" name="drug" value="drug" />
+			<input type="submit" value="Submit" onsubmit="return false" onclick="mainFun()"/>
+		</form>
+	</div>
+</div>
+<div>
+	<table border=0 id="table">
+		<tr>
+			<th>UID</th>
+			<th>Title</th>
+			<th>Publish Date</th>
+			<th>Authors</th>
+			<th>Drug Mentioned in</th>
+			<th>Mentions</th>
+		</tr>
+		<tbody>
+		</tbody>
+	</table>
+</div>
+<script src="/src/parseCSV.js"></script>
+</body>
