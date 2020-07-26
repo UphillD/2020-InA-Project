@@ -103,6 +103,9 @@ th {
 	font-weight: bold;
 }
 
+td {
+	padding: 10px;
+}
 
 tbody {
 	padding: 10px;
@@ -113,9 +116,12 @@ tbody {
 }
 
 #bottomSection {
-	margin: 25px auto;
+	margin: 15px auto;
+	width: 95%;
+}
+
+#results {
 	text-align: right;
-	width: 90%;
 }
 
 .highcharts-figure, .highcharts-data-table table {
@@ -125,7 +131,7 @@ tbody {
 }
 
 .highcharts-data-table table {
-	font-family: Verdana, sans-serif;
+	font-family: Montserrat, sans-serif;
 	border-collapse: collapse;
 	border: 1px solid #EBEBEB;
 	margin: 10px auto;

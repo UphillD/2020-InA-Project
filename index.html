@@ -28,7 +28,7 @@
 	<div id="middleSection">
 		<div id="formContainer">
 			<input type="text" id="input" placeholder="Search..."/>
-			<input type="submit" id="submit" value="&#xf00e;" onclick="mainFun()"/>
+			<input type="submit" id="submit" value="&#xf00e;" onclick="main()"/>
 		</div>
 	</div>
 	
@@ -50,14 +50,16 @@
 	</div>
 	
 	<div id="bottomSection">
-		<div id="footer">
+		<figure class="highcharts-figure">
+			<div id="container"></div>
+		</figure>
+		<div id="results">
 		</div>
 	</div>
 	
-	<figure class="highcharts-figure">
-		<div id="container"></div>
-	</figure>
 
 	<script src="/src/script.js"></script>
 	<script src="/src/chart.js"></script>
+	<script src="/src/macros.js"></script>
+	<script src="/src/main.js"></script>
 </body>
