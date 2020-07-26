@@ -1,9 +1,11 @@
 // Columns to show in the final table
-vCols = [0, 3, 9, 10]
-vNames = ["UID", "Title", "Publish Date", "Authors"]
+var vCols = [0, 3, 9, 10]
+var vNames = ["UID", "Title", "Publish Date", "Authors"]
 // Columns to check for mentions of the search query
-cCols = [3, 8];
-cNames = ["Title", "Abstract", "Full Text"];
+var cCols = [3, 8];
+var cNames = ["Title", "Abstract", "Full Text"];
+
+var years = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 /* parseCSV function
  * Parses the metadata .csv file row-by-row, passing the results to addRow()
@@ -30,6 +32,7 @@ function parseCSV(file, query) {
 			// Print a confirmation message to the console
 			console.log("CSV parsing complete.");
 			document.getElementById("footer").textContent = "Done.";
+			createChart(query, years);
 		}
 	});
 }
@@ -61,6 +64,11 @@ function addRow(row, tableRef, drug) {
 		for (j = 0; j < vCols.length; j++) {
 			ptr = vCols[j];
 			newCell = newRow.insertCell(j);
+			// Store year for chart
+			if (ptr == 9) {
+				year = String(row[ptr]).split('-')[0] - 2000;
+				years[year] += 1;
+			}
 			text = formatAuthors(String(row[ptr]), ptr);
 			newText = document.createTextNode(text);
 			newCell.appendChild(newText);
