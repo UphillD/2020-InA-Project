@@ -18,7 +18,8 @@ function loadFile(file) {
 	if (xmlhttp.status == 200) {
 		result = xmlhttp.responseText;
 	}
-	return result;
+	if (result != null) return result.toLowerCase();
+	else return result;
 }
 
 // formats a string containing the Authors of a paper
@@ -40,6 +41,9 @@ function occurrences(string, subString) {
 	// Typecast
     string += "";
     subString += "";
+
+	// Turn the substring into lowercase
+	subString = subString.toLowerCase();
 
     var n = 0,
         pos = 0,
