@@ -13,7 +13,7 @@ var cCols = [3, 8];
 var cNames = ["Title", "Abstract", "Full Text"];
 
 // Array to store occurrences per year
-var years = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+var years;
 // Variables for measuring execution time
 var tstart, tfin;
 // Counters for articles parsed and articles where the query was found
@@ -38,6 +38,9 @@ function parseCSV(file, query) {
 	// Initialize the counters
 	cntrparsed = 0
 	cntrkept = 0
+	
+	// Initialize years array
+	years = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	
 	// Create reference to contents of table
 	let tableRef = document.getElementById("finalTable").getElementsByTagName("tbody")[0];
@@ -108,8 +111,10 @@ function addRow(row, tableRef, drug) {
 			// Cases for year storing & author name formatting
 			// If on "Publish Date" column, Store year for chart
 			if (ptr == 9) {
+				text = String(row[ptr]);
 				year = String(row[ptr]).split('-')[0] - 2000;
 				years[year] += 1;
+				console.log(years);
 			// If on "Authors" column, format the text accoringly
 			} else if (ptr == 10) {
 				text = formatAuthors(String(row[ptr]), ptr);

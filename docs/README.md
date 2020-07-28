@@ -8,10 +8,20 @@
 
 This is my personal project for the course "Internet & Applications" [3.5.63.8]
 
-## Goal:
+## Goal
 
 Parse the [Cord-19 dataset](https://www.semanticscholar.org/cord19); 
 find and display all articles that mention a specific drug, provided by the user.
+
+## Submission
+
+1. Implementation Code (This repo)
+
+2. A Readme (This file)
+
+3. Presentation (WIP)
+
+4. [Demonstration video](https://youtu.be/a5997tzicfo)
 
 ## Problem Formulation:
 

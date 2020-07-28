@@ -21,5 +21,5 @@ document.getElementById("input")
 function main() {
 	var query = document.getElementById('input').value;	
 	event.preventDefault();
-	parseCSV('../data/metadata.csv', query);
+	parseCSV('../data/metadata_min.csv', query);
 }
