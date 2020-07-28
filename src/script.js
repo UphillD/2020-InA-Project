@@ -17,7 +17,7 @@ var years = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 // Variables for measuring execution time
 var tstart, tfin;
 // Counters for articles parsed and articles where the query was found
-var cntrparsed = 0, cntrkept = 0;
+var cntrparsed, cntrkept;
 
 /* 
  * parseCSV function
@@ -35,11 +35,15 @@ function parseCSV(file, query) {
 	// Start timer
 	tstart = performance.now();
 	
+	// Initialize the counters
+	cntrparsed = 0
+	cntrkept = 0
+	
 	// Create reference to contents of table
 	let tableRef = document.getElementById("finalTable").getElementsByTagName("tbody")[0];
 	// Clean table of previous data
 	// start from index 1 to skip header
-	while(tableRef.rows[1]) tableRef.deleteRow(1);
+	while(tableRef.rows[0]) tableRef.deleteRow(0);
 	
 	// Show progress
 	document.getElementById("results").textContent = "Searching...";
