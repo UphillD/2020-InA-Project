@@ -8,6 +8,22 @@
 
 This is my personal project for the course "Internet & Applications" [3.5.63.8]
 
+## Table of Contents
+
+1. [Goal](#Goal)
+
+2. [Submission](#Submission)
+
+3. [Problem Formulation](#Problem-Formulation)
+
+4. [Project Tree](#Project-Tree)
+
+5. [Implementation Specifics](#Implementation-Specifics)
+
+6. [Modules used](#Modules-used)
+
+7. [Final Notes](#Final-Notes)
+
 ## Goal
 
 Parse the [Cord-19 dataset](https://www.semanticscholar.org/cord19); 
@@ -90,3 +106,4 @@ contains the code that creates the *Articles per Year* chart at the end of each 
 
 *The project was run and tested on an Apache server.*
 
+[⇯ Back to Top](#Table-of-Contents)
