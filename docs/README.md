@@ -1,5 +1,5 @@
-# Internet & Applications
-## COVID-02 Project
+# COVID-02 Project
+## Internet & Applications
 
 ![status: working](status-working-green.svg)
 
@@ -26,7 +26,7 @@ find and display all articles that mention a specific drug, provided by the user
 
 1. Implementation Code (This repo)
 2. A Readme (This file)
-3. Presentation (WIP)
+3. [Presentation](Presentation.pptx)
 4. [Demonstration video](https://youtu.be/a5997tzicfo)
 
 ## Problem Formulation:
@@ -48,11 +48,9 @@ find and display all articles that mention a specific drug, provided by the user
 ## Implementation Specifics
 
 The folder */data* contains the files of the cord-19 dataset. 
-These files need to be downloaded and extracted so that they resemble the above directory structure.
+These files need to be downloaded and extracted so that they resemble the directory structure below.
 
-The implementation is based on JavaScript code, which has been split into 4 files for easier viewing.
-
-Some info on the files:
+The implementation is based on JavaScript code, which has been split into 4 files for easier viewing:
 
 1. **script.js**: 
 contains the 3 functions that perform the main implementation of the project. 
@@ -86,12 +84,12 @@ contains the code that creates the *Articles per Year* chart at the end of each 
 
 ## Final Notes
 
-Used [Papaparse](https://www.papaparse.com/) for the .csv parsing
+Used [Papaparse](https://www.papaparse.com/) for the .csv parsing.
 
-Used [Highcharts](https://www.highcharts.com/) for the charts
+Used [Highcharts](https://www.highcharts.com/) for the charts.
 
 *Everything is written in pure JavaScript, no jQuery.*
 
 *The project was run and tested on an Apache server.*
 
-[⇯ Back to Top](#Internet-&-Applications)
+[⇯ Back to Top](#covid-02-project)
