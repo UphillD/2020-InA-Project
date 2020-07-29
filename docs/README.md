@@ -57,18 +57,15 @@ The .java file must be compiled before running:
     cd WEB-INF/classes/searchServlet.java
     javac searchServlet.java
 
-The implementation is based on JavaScript code, which has been split into 4 files for easier viewing:
+The implementation is based on JavaScript code, which has been split into 3 files for easier viewing:
 
 1. **script.js**: 
 contains the 3 functions that perform the main implementation of the project. 
 
-2. **main.js**: 
-contains an event listener and the main function that is called by the page elements and, in turn, calls everything else.
-
-3. **macros.js**:
+2. **macros.js**:
 contains several smaller functions that are utilized by the main program.
 
-4. **chart.js**:
+3. **chart.js**:
 contains the code that creates the *Articles per Year* chart at the end of each search.
 
 ## Project Tree
@@ -84,10 +81,14 @@ contains the code that creates the *Articles per Year* chart at the end of each 
     ├ src
 	│    ├ chart.js
     │    ├ macros.js
-    │    ├ main.js
     │    ├ script.js
     │    └ style.css
-    └ index.html
+	├ WEB-INF
+	│    ├ classes
+	│    │    ├ searchServlet.class
+	│    │    └ searchServlet.java
+	│    └ web.xml
+    └ index.jsp
 
 ## Final Notes
 
