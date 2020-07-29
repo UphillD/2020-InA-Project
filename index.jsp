@@ -1,3 +1,4 @@
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +7,11 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<script src="https://unpkg.com/papaparse@5.2.0/papaparse.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
-	<link rel="stylesheet" type="text/css" href="src/style.css">
-	<link rel="icon" type="image/png" href="/src/favicon.png"/>
+	<script src="./src/script.js"></script>
+	<script src="./src/chart.js"></script>
+	<script src="./src/macros.js"></script>
+	<link rel="stylesheet" type="text/css" href="./src/style.css">
+	<link rel="icon" type="image/png" href="./src/favicon.png"/>
 	
 </head>
 <body>
@@ -29,8 +33,10 @@
 
 	<div id="middleSection">
 		<div id="formContainer">
-			<input type="text" id="input" placeholder="Search..."/>
-			<input type="submit" id="submit" value="&#xf00e;" onclick="main()"/>
+			<form name="searchForm" method="post" action="searchServlet">
+				<input type="text" name="query" id="input" placeholder="Search..."/>
+				<input type="submit" id="submit" value="&#xf00e;"/>
+			</form>
 		</div>
 	</div>
 	
@@ -59,9 +65,14 @@
 		</figure>
 	</div>
 	
+	<% String query = (String) request.getAttribute("searchQuery"); %>
+	
+	<script>
+		var query = "<%=query%>";
+		if (query != "null") {
+			console.log(query);
+			parseCSV('./data/metadata_min.csv', query);
+		}
+	</script>
 
-	<script src="/src/script.js"></script>
-	<script src="/src/chart.js"></script>
-	<script src="/src/macros.js"></script>
-	<script src="/src/main.js"></script>
 </body>
