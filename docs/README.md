@@ -27,28 +27,35 @@ find and display all articles that mention a specific drug, provided by the user
 1. Implementation Code (This repo)
 2. A Readme (This file)
 3. [Presentation](Presentation.pptx)
-4. [Demonstration video](https://youtu.be/a5997tzicfo)
+4. Demonstration video -> WIP
 
 ## Problem Formulation:
 
 1. Receive search query (drug name) from user.
 
-2. Parse the .csv file row-by-row using *PapaParse*. Each row contains the metadata for a separate article.
+2. Use a *Java Servlet* to pass the query to javascript code.
 
-3. Search through the row and the linked pmc/pdf files for mentions of the drug.
+3. Parse the .csv file row-by-row using *PapaParse*. Each row contains the metadata for a separate article.
 
-4. If no mentions were found, discard the row.
+4. Search through the row and the linked pmc/pdf files for mentions of the drug.
 
-5. Repeat 3-4 for all rows.
+5. If no mentions were found, discard the row.
 
-6. Serve the final table.
+6. Repeat 3-4 for all rows.
 
-7. (Optional) Serve a complimentary Articles per Year chart using *Highcharts*
+7. Serve the final table.
+
+8. (Optional) Serve a complimentary Articles per Year chart using *Highcharts*
 
 ## Implementation Specifics
 
 The folder */data* contains the files of the cord-19 dataset. 
 These files need to be downloaded and extracted so that they resemble the directory structure below.
+
+The .java file must be compiled before running:
+
+    cd WEB-INF/classes/searchServlet.java
+    javac searchServlet.java
 
 The implementation is based on JavaScript code, which has been split into 4 files for easier viewing:
 
@@ -88,8 +95,10 @@ Used [Papaparse](https://www.papaparse.com/) for the .csv parsing.
 
 Used [Highcharts](https://www.highcharts.com/) for the charts.
 
+*A Java servlet was used for calling the javascript functions.*
+
 *Everything is written in pure JavaScript, no jQuery.*
 
-*The project was run and tested on an Apache server.*
+*The project was run and tested on an Apache Tomcat server.*
 
 [⇯ Back to Top](#covid-02-project)
