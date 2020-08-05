@@ -113,8 +113,9 @@ function addRow(row, tableRef, drug) {
 			if (ptr == 9) {
 				text = String(row[ptr]);
 				year = String(row[ptr]).split('-')[0] - 2000;
-				years[year] += 1;
-				console.log(years);
+				if (year >= 0) {
+					years[year] += 1;
+				}
 			// If on "Authors" column, format the text accoringly
 			} else if (ptr == 10) {
 				text = formatAuthors(String(row[ptr]), ptr);

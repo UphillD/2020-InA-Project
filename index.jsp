@@ -70,8 +70,7 @@
 	<script>
 		var query = "<%=query%>";
 		if (query != "null") {
-			console.log(query);
-			parseCSV('./data/metadata_min.csv', query);
+			parseCSV('./data/metadata.csv', query);
 		}
 	</script>
 

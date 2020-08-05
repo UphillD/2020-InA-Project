@@ -27,7 +27,7 @@ find and display all articles that mention a specific drug, provided by the user
 1. Implementation Code (This repo)
 2. A Readme (This file)
 3. [Presentation](Presentation.pptx)
-4. Demonstration video -> WIP
+4. [Demonstration video](https://youtu.be/ZlfYjq8xDwo)
 
 ## Problem Formulation:
 
